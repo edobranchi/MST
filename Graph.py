@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import numpy as np
 import random
 import networkx as nx
@@ -13,9 +7,6 @@ import matplotlib.pyplot as plt
 from collections import defaultdict
 import heapq
 import pprint
-
-
-# In[2]:
 
 
 # Generazione grafo non pesato e non orientato
@@ -129,12 +120,6 @@ def create_spanning_tree(graph, starting_vertex):
     plt.show()
     
     return mst
-
-
-          
-
-
-# In[3]:
 
 
 #simple_graph_generation()
