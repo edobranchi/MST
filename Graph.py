@@ -43,7 +43,6 @@ def weighted_graph_generation():
     nodes_number = random.randint(5, 10) # generazione numero di nodi casuali
     labels = string.ascii_lowercase #prendo le lettere dell'alfabeto
     label_array = list(labels) #le metto nell'array
-
     del label_array[nodes_number:] #cancello le lettere che non mi servono
     adjacency_matrix = np.random.randint(1, 10, (nodes_number, nodes_number)) #popolo la matrice con n° casuali da 1 a 10
     adjacency_matrix[np.random.rand(*adjacency_matrix.shape) < 0.7] = 0 #0.7 di probabilià che un arco diventi 0
@@ -53,17 +52,16 @@ def weighted_graph_generation():
     df.columns = ['{}'.format(c) for c in label_array] #assegno una lettera ad aogni colonna
     df.index = ['{}'.format(c) for c in label_array] #assegno una lettera ad ogni riga
     np.fill_diagonal(df.values, 0) #porto la diagonale a 0
+    
     print("Matrice di adiacenza del grafo:\n \n", df,"\n")
     print("Grafico pesato corrispondente : \n ")
     
     G = nx.from_numpy_matrix(np.array(df)) #creo il grafo
     G = nx.relabel_nodes(G, dict(enumerate(df.columns))) #rinomino i nodi
-    
     layout = nx.circular_layout(G) #uso un layout circolare
     nx.draw(G, layout, with_labels=True) #disegno il grafo
     labels = nx.get_edge_attributes(G, "weight") #estraggo i pesi degli archi
     nx.draw_networkx_edge_labels(G, pos=layout, edge_labels=labels) #disegno i pesi degli archi
-
     ax = plt.gca()
     ax.margins(0.50) # impostazioni di disegno del grafo
     plt.axis("off")
@@ -72,12 +70,14 @@ def weighted_graph_generation():
     for col in df.columns:      #sostituisco gli zeri della matrice con archi di peso 99
         val = 99
         df[col] = df[col].replace(0, val)
+    
     Prova(df)
     G.clear()
     
 
 
 def Prova(df):
+    
     for col in df.columns:  # Loop sulle colonne del df
         if len(df[col].unique()) == 1:  # trovo i valori unici nelle colonne, se ==1 allora la colonna ha tutti valori uguali
             df.drop([col], axis=1, inplace=True)  # elimino la colonna, in quanto sarebbe un nodo isolato
