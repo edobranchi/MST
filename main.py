@@ -8,8 +8,10 @@ def print_menu():  ## Your menu design here
       print ("1. Generazione Grafi pesati")
       print ("2. Generazione Grafi Pesati e MST")
       print ("3. Generazione Grafi non pesati")
-      print ("4. test plot")
-      print ("5. exit")
+      print ("4. Grafico Grafo non pesato")
+      print ("5. Grafico grafo pesato")
+      print ("6. Grafico Mst")
+      print ("6. exit")
       print (67 * "-")
 
 
@@ -23,9 +25,9 @@ while loop:  ## While loop which will keep going until loop = False
             print ("Generazione Grafi pesati")
             graph_only=True
             result_file_weighted = open('result_wei.txt', 'w')
-            for i in range(10):  # test pesato
+            for i in range(200):  # test pesato
                   result = Graph.weighted_graph_generation(graph_only)
-                  # print(result)
+                  print(result)
                   result_file_weighted.writelines(str(result) + "\n")
             result_file_weighted.close()
 
@@ -33,7 +35,7 @@ while loop:  ## While loop which will keep going until loop = False
             graph_only=False
             print ("Generazione Grafi Pesati e MST")
             result_file_weighted= open('result_wei.txt', 'w')
-            for i in range(100):                                      #test pesato
+            for i in range(200):                                      #test pesato
                  result = Graph.weighted_graph_generation(graph_only)
                  print(result)
                  result_file_weighted.writelines(str(result)+"\n")
@@ -43,16 +45,22 @@ while loop:  ## While loop which will keep going until loop = False
       elif choice == 3:
             print("Generazione Grafi Pesati non pesati")
             result_file_simple = open('result_simple.txt', 'w')
-            for i in range(20):  # test pesato
+            for i in range(200):  # test pesato
                   result = Graph.simple_graph_generation()
                   print(result)
                   result_file_simple.writelines(str(result) + "\n")
             result_file_simple.close()
 
       elif choice == 4:
-            print("Menu 3 has been selected")
+            print("E' stato selezionato grafico non pesato")
             plot.simple_graph_plot()
       elif choice == 5:
+            print("E' stato selezionato grafico pesato")
+            plot.weighted_graph_plot()
+      elif choice == 6:
+            print("E' stato selezionato grafico MST")
+            plot.mst_graph_plot()
+      elif choice == 6:
             print("Uscita")
             loop = False
       else:

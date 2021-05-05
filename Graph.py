@@ -50,7 +50,7 @@ def simple_graph_generation():
 def weighted_graph_generation(graph_only):
     start_time = time.time()
     time.sleep(1)
-    nodes_number = random.randint(1000, 2000) # generazione numero di nodi casuali
+    nodes_number = random.randint(2000, 3000) # generazione numero di nodi casuali
     labels = string.ascii_lowercase #prendo le lettere dell'alfabeto
     label_array1 = list(labels)#le metto nell'array
     label_array = [''.join(comb) for comb in product(label_array1, repeat=3)]
@@ -83,7 +83,7 @@ def weighted_graph_generation(graph_only):
 #calcolo MST
 def create_spanning_tree(df,nodes_number):
     start_time = time.time()
-    time.sleep(1)
+    #time.sleep(1)
     print(len(df.index))
     print("mst inizio")
     for col in df.columns:      #sostituisco gli zeri della matrice con archi di peso 99
@@ -115,15 +115,16 @@ def create_spanning_tree(df,nodes_number):
                         heapq.heappush(edges, (cost, to, to_next)) #lo aggiungo all'heap
         print("mst fine")
         exec_time = time.time() - start_time
-        exec_time = exec_time % 1
+        #exec_time = exec_time % 1
         exec_time = f'{exec_time:.10f}'
+        result=[exec_time,nodes_number]
         result_mst = open('result_mst.txt', 'a')
-        result_mst.writelines(str(exec_time) + "*" + str(nodes_number) + "\n")
+        result_mst.writelines(str(result)+ "\n")
         result_mst.close()
 
-        return str(exec_time) + "*" + str(nodes_number) + "\n"
-    except:
-        print("An exception occurred")
+        #return str(exec_time) + "*" + str(nodes_number) + "\n"
+    except Exception as e:
+        print(e)
 
 
 
