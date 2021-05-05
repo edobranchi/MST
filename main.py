@@ -1,4 +1,5 @@
 import Graph
+import plot
 
 
 def print_menu():  ## Your menu design here
@@ -7,7 +8,8 @@ def print_menu():  ## Your menu design here
       print ("1. Generazione Grafi pesati")
       print ("2. Generazione Grafi Pesati e MST")
       print ("3. Generazione Grafi non pesati")
-      print ("4. Exit")
+      print ("4. test plot")
+      print ("5. exit")
       print (67 * "-")
 
 
@@ -39,9 +41,9 @@ while loop:  ## While loop which will keep going until loop = False
 
 
       elif choice == 3:
-            print("Generazione Grafi Pesati e MST")
+            print("Generazione Grafi Pesati non pesati")
             result_file_simple = open('result_simple.txt', 'w')
-            for i in range(10):  # test pesato
+            for i in range(20):  # test pesato
                   result = Graph.simple_graph_generation()
                   print(result)
                   result_file_simple.writelines(str(result) + "\n")
@@ -49,6 +51,9 @@ while loop:  ## While loop which will keep going until loop = False
 
       elif choice == 4:
             print("Menu 3 has been selected")
+            plot.simple_graph_plot()
+      elif choice == 5:
+            print("Uscita")
             loop = False
       else:
             # Any integer inputs other than values 1-5 we print an error message
