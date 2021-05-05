@@ -37,13 +37,7 @@ def simple_graph_generation():
     exec_time= exec_time % 1
     exec_time= f'{exec_time:.10f}'
     return exec_time, nodes_number
-    #G = nx.from_numpy_matrix(np.array(df))  # creo il grafo dal df
-    #G = nx.relabel_nodes(G, dict(enumerate(df.columns)))  # nomino i nodi in base alle label sulle colonne
-    #layout = nx.circular_layout(G)  # uso un layout circolare per la rappresentazione
-    #nx.draw(G, layout, with_labels=True)  # disegno il grafo
-    
-    #print(df)  # stampo il df
-    #G.clear()
+
 
 #generazione grafo pesato ma non orientato
 
@@ -83,7 +77,6 @@ def weighted_graph_generation(graph_only):
 #calcolo MST
 def create_spanning_tree(df,nodes_number):
     start_time = time.time()
-    #time.sleep(1)
     print(len(df.index))
     print("mst inizio")
     for col in df.columns:      #sostituisco gli zeri della matrice con archi di peso 99
@@ -115,14 +108,14 @@ def create_spanning_tree(df,nodes_number):
                         heapq.heappush(edges, (cost, to, to_next)) #lo aggiungo all'heap
         print("mst fine")
         exec_time = time.time() - start_time
-        #exec_time = exec_time % 1
         exec_time = f'{exec_time:.10f}'
         result=[exec_time,nodes_number]
         result_mst = open('result_mst.txt', 'a')
-        result_mst.writelines(str(result)+ "\n")
+        result_mst.writelines(str(result) + "\n")
         result_mst.close()
+        exec_time=0
+        nodes_number=0
 
-        #return str(exec_time) + "*" + str(nodes_number) + "\n"
     except Exception as e:
         print(e)
 
