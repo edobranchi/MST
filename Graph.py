@@ -17,10 +17,9 @@ from itertools import product
 def simple_graph_generation():
     start_time = time.time()
     time.sleep(1)
-    label_array = []  # array nomi nodi
     labels = string.ascii_lowercase  # prendo le lettere dell'alfabeto
-    label_array1 = list(labels)  # le metto nell'array
-    label_array = [''.join(comb) for comb in product(label_array1, repeat=3)]
+    label_array1 = list(labels)  # le metto nell'array nomi nodi
+    label_array = [''.join(comb) for comb in product(label_array1, repeat=3)] #generazione variabili per la df
 
     nodes_number = random.randint(2000,3000)  # genero il numero di nodi
     del label_array[nodes_number:]  # cancello dall'array le lettere che non mi servono
