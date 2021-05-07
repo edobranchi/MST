@@ -35,7 +35,7 @@ while loop:  ## While loop which will keep going until loop = False
             graph_only=False
             print ("Generazione Grafi Pesati e MST")
             result_file_weighted= open('result_mst.txt', 'w')
-            for i in range(3):                                      #test pesato
+            for i in range(200):                                      #test pesato
                  result = Graph.weighted_graph_generation(graph_only)
                  #print(result)
                  #result_file_weighted.writelines(str(result)+"\n")
