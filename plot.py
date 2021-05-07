@@ -31,7 +31,9 @@ def simple_graph_plot():
     ax.set_title("Generazione grafo non pesato")  # Add a title to the axes.
 
     plt.xticks(np.arange(0, 1 ,step= 0.2))
+    plt.savefig('simple_graph.png')
     plt.show()
+
 
 def weighted_graph_plot():
     with open('result_wei.txt') as f:
@@ -55,7 +57,10 @@ def weighted_graph_plot():
     ax.set_title("Generazione grafo pesato")  # Add a title to the axes.
 
     plt.xticks(np.arange(0, 1, step=0.2))
+    plt.savefig('weighted_graph.png')
     plt.show()
+
+
 
 def mst_graph_plot():
     with open('result_mst.txt') as f:
@@ -79,4 +84,7 @@ def mst_graph_plot():
     ax.set_title("Generazione grafo MST")  # Add a title to the axes.
 
     plt.xticks(np.arange(0, 20, step=1))
+    plt.savefig('mst_graph.png')
     plt.show()
+
+
