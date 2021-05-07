@@ -9,7 +9,7 @@ import pandas
 
 
 def simple_graph_plot():
-    with open('result_simple.txt') as f:
+    with open('result/result_simple.txt') as f:
         lines = f.readlines()
     x_values= [line.split(",")[0] for line in lines]
                       #regular expr per pulire la stringa (grazie professor Bagdanov)
@@ -31,12 +31,12 @@ def simple_graph_plot():
     ax.set_title("Generazione grafo non pesato")  # Add a title to the axes.
 
     plt.xticks(np.arange(0, 1 ,step= 0.2))
-    plt.savefig('simple_graph.png')
+    plt.savefig('result/simple_graph.png')
     plt.show()
 
 
 def weighted_graph_plot():
-    with open('result_wei.txt') as f:
+    with open('result/result_wei.txt') as f:
         lines = f.readlines()
     x_values = [line.split(",")[0] for line in lines]
     y_values = [line.split(",")[1] for line in lines]
@@ -57,13 +57,13 @@ def weighted_graph_plot():
     ax.set_title("Generazione grafo pesato")  # Add a title to the axes.
 
     plt.xticks(np.arange(0, 1, step=0.2))
-    plt.savefig('weighted_graph.png')
+    plt.savefig('result/weighted_graph.png')
     plt.show()
 
 
 
 def mst_graph_plot():
-    with open('result_mst.txt') as f:
+    with open('result/result_mst.txt') as f:
         lines = f.readlines()
     x_values = [line.split(",")[0] for line in lines]
     y_values = [line.split(",")[1] for line in lines]
@@ -84,7 +84,7 @@ def mst_graph_plot():
     ax.set_title("Generazione grafo MST")  # Add a title to the axes.
 
     plt.xticks(np.arange(0, 20, step=1))
-    plt.savefig('mst_graph.png')
+    plt.savefig('result/mst_graph.png')
     plt.show()
 
 

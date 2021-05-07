@@ -24,7 +24,7 @@ while loop:  ## While loop which will keep going until loop = False
       if choice == 1:
             print ("Generazione Grafi pesati")
             graph_only=True
-            result_file_weighted = open('result_wei.txt', 'w')
+            result_file_weighted = open('result/result_wei.txt', 'w')
             for i in range(20):  # test pesato
                   result = Graph.weighted_graph_generation(graph_only)
                   print(result)
@@ -34,7 +34,7 @@ while loop:  ## While loop which will keep going until loop = False
       elif choice == 2:
             graph_only=False
             print ("Generazione Grafi Pesati e MST")
-            result_file_weighted= open('result_mst.txt', 'w')
+            result_file_weighted= open('result/result_mst.txt', 'w')
             for i in range(200):                                      #test pesato
                  result = Graph.weighted_graph_generation(graph_only)
                  #print(result)
@@ -44,7 +44,7 @@ while loop:  ## While loop which will keep going until loop = False
 
       elif choice == 3:
             print("Generazione Grafi Pesati non pesati")
-            result_file_simple = open('result_simple.txt', 'w')
+            result_file_simple = open('result/result_simple.txt', 'w')
             for i in range(20):  # test pesato
                   result = Graph.simple_graph_generation()
                   print(result)
@@ -80,21 +80,4 @@ while loop:  ## While loop which will keep going until loop = False
 
 
 
-# result_file_simple= open('result_simple.txt', 'w')
-#
-# for i in range(1000):                                        #test non pesato
-#      result = Graph.simple_graph_generation()
-#      print(result)
-#      result_file_simple.writelines(str(result)+"\n")
-# result_file_simple.close()
-#
-# result=0
-#
-#
-# result_file_weighted= open('result_wei.txt', 'w')
-# for i in range(1000):                                      #test pesato
-#      result = Graph.weighted_graph_generation()
-#      print(result)
-#      result_file_weighted.writelines(str(result)+"\n")
-# result_file_weighted.close()
 

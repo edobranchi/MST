@@ -109,7 +109,7 @@ def create_spanning_tree(df,nodes_number):
         exec_time = time.time() - start_time
         exec_time = f'{exec_time:.10f}'
         result=[exec_time,nodes_number]
-        result_mst = open('result_mst.txt', 'a')
+        result_mst = open('result/result_mst.txt', 'a')
         result_mst.writelines(str(result) + "\n")
         result_mst.close()
         exec_time=0
