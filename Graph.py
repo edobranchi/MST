@@ -54,6 +54,9 @@ def weighted_graph_generation(graph_only):
     adjacency_matrix = np.random.randint(1, 10, (nodes_number, nodes_number)) #popolo la matrice con n° casuali da 1 a 10
     adjacency_matrix[np.random.rand(*adjacency_matrix.shape) < 0.7] = 0 #0.7 di probabilià che un arco diventi 0
     adjacency_matrix = (adjacency_matrix + adjacency_matrix.T) / 2 #rendo la matrice simmetrica
+    EDGES_n = np.count_nonzero(adjacency_matrix)
+    EDGES_n=EDGES_n/2
+    print(EDGES_n)
     df = pd.DataFrame(data=adjacency_matrix) #trasformo la matrice in un df
     df = df.astype(int) #casto a int la df
     df.columns = ['{}'.format(c) for c in label_array] #assegno una lettera ad aogni colonna
@@ -61,7 +64,7 @@ def weighted_graph_generation(graph_only):
     np.fill_diagonal(df.values, 0) #porto la diagonale a 0
 
     if (graph_only==False):
-        create_spanning_tree(df,nodes_number)
+        create_spanning_tree(df,nodes_number,EDGES_n)
 
     exec_time = time.time() - start_time
     exec_time = exec_time % 1
@@ -74,7 +77,7 @@ def weighted_graph_generation(graph_only):
 
 
 #calcolo MST
-def create_spanning_tree(df,nodes_number):
+def create_spanning_tree(df,nodes_number,EDGES_n):
     start_time = time.time()
     print(len(df.index))
     print("mst inizio")
@@ -108,7 +111,7 @@ def create_spanning_tree(df,nodes_number):
         print("mst fine")
         exec_time = time.time() - start_time
         exec_time = f'{exec_time:.10f}'
-        result=[exec_time,nodes_number]
+        result=[exec_time,nodes_number,EDGES_n]
         result_mst = open('result/result_mst.txt', 'a')
         result_mst.writelines(str(result) + "\n")
         result_mst.close()
